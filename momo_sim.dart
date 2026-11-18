@@ -83,15 +83,30 @@ void main() {
   // by O.A.M.S
   print('Reg no: $regNo | D = $d | T = $t');
 
-  print(formatRwf(0));
-  print(formatRwf(999));
-  print(formatRwf(1000));
-  print(formatRwf(1250000));
-  print(formatRwf(-5000));
-
   print(isValidPin('12345'));
   print(isValidPin('77777'));
   print(isValidPin('4821'));
   print(isValidPin('48a21'));
   print(isValidPin('4821$d'));
+
+  int balance = 20000 + t * 500;
+  print('Starting balance: ${formatRwf(balance)}');
+
+  int k = 1;
+  while (k <= 3) {
+    balance = sendMoney(balance, (d + 1) * 3000);
+    k++;
+  }
+  balance = buyAirtime(balance, 1000);
+  balance = sendMoney(balance, 0);
+  balance = sendMoney(balance, 200000);
+
+  print('Final balance: ${formatRwf(balance)}');
+
+  print(formatRwf(-999));     // -999 RWF  (might break: no comma after the minus)
+  print(formatRwf(1000000));  // 1,000,000 RWF
+  print(formatRwf(123456789)); // 123,456,789 RWF
+  print(isValidPin('48 21')); // false (space is not a digit)
+  print(isValidPin(''));      // false (empty, might break on pin[0])
+  print(isValidPin('00000')); // false (same digit five times)
 }
