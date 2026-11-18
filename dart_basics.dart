@@ -21,7 +21,9 @@ String initials(String fullName) {
   List<String> parts = fullName.split(' ');
   String result = '';
   for (String part in parts) {
-    result += part[0].toUpperCase() + '.';
+    if (part.isNotEmpty) {
+      result += part[0].toUpperCase() + '.';
+    }
   }
   return result;
 }
