@@ -28,6 +28,14 @@ String initials(String fullName) {
   return result;
 }
 
+void drawTriangle(int height) {
+  // by O.A.M.S
+  for (int row = 1; row <= height; row++) {
+    String symbol = row % 2 == 1 ? '*' : '#';
+    print(' ' * (height - row) + symbol * row);
+  }
+}
+
 void main() {
   // by O.A.M.S
   print('Reg no: $regNo | D = $d | T = $t');
@@ -38,4 +46,8 @@ void main() {
   print(initials(myName));
   print(initials(' ana  uwase '));
   print(initials(' '));
+
+  drawTriangle(d + 3);
+  drawTriangle(0);
+  drawTriangle(-2);
 }
