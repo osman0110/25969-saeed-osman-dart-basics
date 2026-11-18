@@ -16,10 +16,24 @@ int countVowels(String text) {
   return total;
 }
 
+String initials(String fullName) {
+  // by O.A.M.S
+  List<String> parts = fullName.split(' ');
+  String result = '';
+  for (String part in parts) {
+    result += part[0].toUpperCase() + '.';
+  }
+  return result;
+}
+
 void main() {
   // by O.A.M.S
   print('Reg no: $regNo | D = $d | T = $t');
 
   String myName = 'Osman Albager Mohamed Saeed';
   print('$myName has ${countVowels(myName)} vowels');
+
+  print(initials(myName));
+  print(initials(' ana  uwase '));
+  print(initials(' '));
 }
